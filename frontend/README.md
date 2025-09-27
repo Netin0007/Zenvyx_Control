@@ -1,12 +1,41 @@
-# React + Vite
+# 📦 Estoque Simples - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-Currently, two official plugins are available:
+Interface web moderna para um sistema de gerenciamento de estoque, desenvolvida como parte do projeto final da disciplina de IHC. A aplicação permite o controle completo de produtos, incluindo criação, leitura, atualização e exclusão (CRUD), com atualizações em tempo real na interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Funcionalidades Principais
 
-## Expanding the ESLint configuration
+- **Listagem de Produtos:** Visualização de todos os produtos em estoque em uma tabela clara e organizada.
+- **Adicionar Produto:** Formulário intuitivo para cadastrar novos itens no inventário.
+- **Editar Produto:** Funcionalidade de edição que preenche o formulário com os dados do item selecionado para uma atualização fácil.
+- **Excluir Produto:** Remoção de itens do estoque com um clique.
+- **Alerta de Estoque Baixo:** Itens com quantidade igual ou inferior ao nível de alerta são destacados visualmente na tabela para rápida identificação.
+- **Interface Reativa:** Todas as operações (criar, editar, excluir) refletem na tabela instantaneamente, sem a necessidade de recarregar a página.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🖼️ Telas da Aplicação
+
+[INSIRA UMA IMAGEM DA APLICAÇÃO AQUI. TIRE UM PRINT DA TELA E ARRASTE PARA O SITE DO GITHUB NO README]
+
+## 🚀 Tecnologias Utilizadas
+
+- **[React.js](https://reactjs.org/):** Biblioteca principal para a construção da interface de usuário.
+- **[Vite.js](https://vitejs.dev/):** Ferramenta de build extremamente rápida para o ambiente de desenvolvimento.
+- **CSS3:** Para estilização e melhorias visuais dos componentes.
+- **JSON Server:** Utilizado como um mock de API para simular o backend durante o desenvolvimento do frontend.
+
+## ⚙️ Como Rodar o Projeto Localmente
+
+Siga os passos abaixo para configurar e rodar a aplicação no seu ambiente de desenvolvimento.
+
+**Pré-requisitos:**
+- [Node.js](https://nodejs.org/en/) (versão LTS recomendada)
+- [Git](https://git-scm.com/)
+
+**Passos:**
+
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/Netin0007/Projeto_Front.git](https://github.com/Netin0007/Projeto_Front.git)

@@ -15,10 +15,6 @@ Interface web moderna para um sistema de gerenciamento de estoque, desenvolvida 
 - **Alerta de Estoque Baixo:** Itens com quantidade igual ou inferior ao nível de alerta são destacados visualmente na tabela para rápida identificação.
 - **Interface Reativa:** Todas as operações (criar, editar, excluir) refletem na tabela instantaneamente, sem a necessidade de recarregar a página.
 
-## 🖼️ Telas da Aplicação
-
-[INSIRA UMA IMAGEM DA APLICAÇÃO AQUI. TIRE UM PRINT DA TELA E ARRASTE PARA O SITE DO GITHUB NO README]
-
 ## 🚀 Tecnologias Utilizadas
 
 - **[React.js](https://reactjs.org/):** Biblioteca principal para a construção da interface de usuário.

@@ -1,4 +1,4 @@
-# 📦 Estoque Simples - Frontend
+# 📦 Estoque Simples - Zenvyx Control
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
@@ -29,9 +29,3 @@ Siga os passos abaixo para configurar e rodar a aplicação no seu ambiente de d
 **Pré-requisitos:**
 - [Node.js](https://nodejs.org/en/) (versão LTS recomendada)
 - [Git](https://git-scm.com/)
-
-**Passos:**
-
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/Netin0007/Projeto_Front.git](https://github.com/Netin0007/Projeto_Front.git)

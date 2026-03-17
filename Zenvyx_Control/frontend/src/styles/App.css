@@ -1,101 +1,310 @@
-/* Estilo geral da fonte e fundo */
+/* =====================================================
+   ESTILOS GLOBAIS DA APLICAÇÃO
+   ===================================================== */
+
+/* 
+  Define fonte padrão, cores base e reset básico da página
+  - Usa fontes do sistema para melhor performance
+*/
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: #f4f7f6;
   color: #333;
   margin: 0;
   padding: 20px;
 }
 
-/* Container principal da aplicação */
+/* 
+  Container principal da aplicação
+  - Centraliza conteúdo
+  - Limita largura para melhor leitura
+*/
 .app-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  background-color: #ffffff;
-  padding: 20px 40px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para o formulário */
-.form-container {
+
+/* =====================================================
+   CABEÇALHO (HEADER) E AÇÕES PRINCIPAIS
+   ===================================================== */
+
+/* 
+  Layout do cabeçalho:
+  - Flex para alinhar título e botão
+  - Responsivo com wrap
+*/
+.header-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.form-container h2 {
-  margin-top: 0;
+/* 
+  Estilo do título principal
+*/
+.header-principal h1 {
+  margin: 0;
+  color: #2c3e50;
 }
 
-.form-container div {
+/* 
+  Botão de criação de novo produto
+  - Destaque visual (cor verde)
+  - Estilo amigável e clicável
+*/
+.btn-novo-produto {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* 
+  Estado hover para feedback visual
+*/
+.btn-novo-produto:hover {
+  background-color: #219653;
+}
+
+
+/* =====================================================
+   GRID DE PRODUTOS E CARDS
+   ===================================================== */
+
+/* 
+  Grid responsivo:
+  - Cria colunas automáticas
+  - Mantém tamanho mínimo de 280px
+*/
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* 
+  Card individual de produto
+  - Layout em coluna
+  - Espaçamento interno consistente
+*/
+.card-produto {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 
+  Estado visual para baixo estoque
+  - Destaque com borda lateral
+*/
+.card-produto.alerta-estoque {
+  border-left: 6px solid #ff9800;
+  background-color: #fffaf0;
+}
+
+
+/* =====================================================
+   CABEÇALHO DO CARD
+   ===================================================== */
+
+.card-header {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+/* Nome do produto */
+.card-header h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+/* Código SKU */
+.card-header .sku {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  font-weight: bold;
+}
+
+
+/* =====================================================
+   CORPO DO CARD
+   ===================================================== */
+
+/* 
+  Layout horizontal entre preço e quantidade
+*/
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 
+  Destaque do preço
+  - Cor verde para associação positiva (valor/venda)
+*/
+.preco {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #27ae60;
+  margin: 0;
+}
+
+/* 
+  Caixa visual da quantidade em estoque
+*/
+.quantidade-box {
+  background-color: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+/* Valor da quantidade */
+.quantidade {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+
+/* =====================================================
+   AÇÕES DO CARD (BOTÕES)
+   ===================================================== */
+
+/* 
+  Container dos botões
+  - Mantém espaçamento e alinhamento
+*/
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Empurra para o final do card */
+}
+
+/* 
+  Estilo base dos botões de ação
+*/
+.btn-editar,
+.btn-excluir {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Botão editar */
+.btn-editar {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+/* Botão excluir */
+.btn-excluir {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+
+/* =====================================================
+   FORMULÁRIO DE PRODUTO
+   ===================================================== */
+
+/* 
+  Container do formulário
+  - Estilo em "card"
+*/
+.form-container {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+/* 
+  Grid do formulário (mobile-first)
+*/
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
   margin-bottom: 15px;
 }
 
+/* 
+  Responsividade:
+  - Duas colunas em telas maiores
+*/
+@media (min-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Labels dos inputs */
 .form-container label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
+/* Inputs do formulário */
 .form-container input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+  border-radius: 6px;
+  box-sizing: border-box;
 }
 
-/* Estilo do botão principal */
-button {
+
+/* =====================================================
+   AÇÕES DO FORMULÁRIO
+   ===================================================== */
+
+/* Container dos botões */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+/* Botão salvar */
+.btn-salvar {
+  flex: 2;
   background-color: #007bff;
   color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-/* Estilos para a tabela */
-.product-table {
-  width: 100%;
-  border-collapse: collapse; /* Tira o espaço entre as células */
-  margin-top: 20px;
-}
-
-.product-table th, .product-table td {
-  border: 1px solid #ddd;
   padding: 12px;
-  text-align: left;
-}
-
-.product-table th {
-  background-color: #f2f2f2;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
   font-weight: bold;
 }
 
-/* Estilo para os botões de ação na tabela */
-.product-table button {
-  margin-right: 5px;
-  padding: 5px 10px;
-  font-size: 14px;
-}
-
-.product-table .btn-delete {
-  background-color: #dc3545;
-}
-.product-table .btn-delete:hover {
-  background-color: #c82333;
-}
-
-/* Estilo para a linha da tabela com estoque baixo */
-.low-stock {
-  background-color: #fff3cd; /* Um amarelo claro */
-  color: #856404; /* Um marrom/dourado escuro */
+/* Botão cancelar */
+.btn-cancelar {
+  flex: 1;
+  background-color: #95a5a6;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
   font-weight: bold;
 }

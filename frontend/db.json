@@ -1,0 +1,31 @@
+{
+  "produtos": [
+    {
+      "id": "8d23",
+      "nome": "Suco Tang Uva 250ml",
+      "sku": "XYZ-982",
+      "quantidade": "30",
+      "precoCusto": "0.80",
+      "precoVenda": "1.25",
+      "estoqueBaixo": 5
+    },
+    {
+      "id": "e6e5",
+      "nome": "suco",
+      "sku": "DNS-987",
+      "quantidade": 0,
+      "precoCusto": 0,
+      "precoVenda": 0,
+      "estoqueBaixo": 5
+    },
+    {
+      "id": "23d3",
+      "nome": "Suco Tang Maracuja",
+      "sku": "LKS-675",
+      "quantidade": "120",
+      "precoCusto": "0.85",
+      "precoVenda": "1.35",
+      "estoqueBaixo": 5
+    }
+  ]
+}

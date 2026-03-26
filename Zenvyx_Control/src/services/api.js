@@ -1,9 +1,5 @@
-const API_URL = "http://localhost:3001";
-
-const ORG_ID = import.meta.env.VITE_ZOHO_ORG_ID;
-const REFRESH_TOKEN = import.meta.env.VITE_ZOHO_REFRESH_TOKEN;
-const CLIENT_ID = import.meta.env.VITE_ZOHO_CLIENT_ID;
-const CLIENT_SECRET = import.meta.env.VITE_ZOHO_CLIENT_SECRET;
+// src/services/api.js
+const API_URL = "http://localhost:3001"; 
 
 export const fetchZoho = async (endpoint, options = {}) => {
   const url = `${API_URL}${endpoint}`;
@@ -13,11 +9,16 @@ export const fetchZoho = async (endpoint, options = {}) => {
     ...options.headers,
   };
 
-  const response = await fetch(url, { ...options, headers });
-  
-  if (!response.ok) {
-    throw new Error('Erro na comunicação com o servidor local');
-  }
+  try {
+    const response = await fetch(url, { ...options, headers });
+    
+    if (!response.ok) {
+      throw new Error('Servidor local não respondeu corretamente');
+    }
 
-  return response.json();
+    return await response.json();
+  } catch (error) {
+    console.error("Erro na API Local:", error);
+    throw error;
+  }
 };

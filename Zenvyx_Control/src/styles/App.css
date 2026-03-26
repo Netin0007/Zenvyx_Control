@@ -1,18 +1,20 @@
-/* --- CONFIGURAÇÕES GERAIS --- */
+/* =========================================
+   1. ESTILOS GLOBAIS
+   ========================================= */
 :root {
   --primary: #3498db;
   --secondary: #2c3e50;
-  --bg: #f4f7f6;
-  --text: #333;
-  --error: #e74c3c;
+  --bg: #f8fafc;
+  --danger: #e74c3c;
   --success: #27ae60;
+  --border: #e2e8f0;
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg);
-  color: var(--text);
+  color: #333;
 }
 
 .app-container {
@@ -21,7 +23,9 @@ body {
   padding: 20px;
 }
 
-/* --- MENU DE NAVEGAÇÃO (NAVBAR) --- */
+/* =========================================
+   2. NAVBAR (MENU SUPERIOR)
+   ========================================= */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -33,16 +37,9 @@ body {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.navbar h1 {
-  color: white;
-  margin: 0;
-  font-size: 1.4rem;
-}
+.navbar h1 { color: white; margin: 0; font-size: 1.4rem; }
 
-.nav-links {
-  display: flex;
-  gap: 15px;
-}
+.nav-links { display: flex; gap: 15px; }
 
 .nav-links a {
   color: #ecf0f1;
@@ -53,122 +50,19 @@ body {
   transition: 0.3s;
 }
 
-.nav-links a:hover {
-  background-color: rgba(255,255,255,0.1);
-}
+.nav-links a:hover { background-color: rgba(255,255,255,0.1); }
 
-/* --- FORMULÁRIO MODERNO --- */
-.form-moderno {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.form-header h2 { margin: 0; color: var(--secondary); }
-.form-header p { color: #7f8c8d; font-size: 0.9rem; margin-top: 5px; }
-
-.form-secao {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-
-.form-secao h3 {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #95a5a6;
-  margin-bottom: 15px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.form-grid-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 15px;
-}
-
-.input-group label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--secondary);
-}
-
-.input-group input {
-  padding: 12px;
-  border: 2px solid #dfe6e9;
-  border-radius: 6px;
-  font-size: 16px; /* Evita zoom automático no iPhone */
-  transition: 0.3s;
-}
-
-.input-group input:focus {
-  border-color: var(--primary);
-  outline: none;
-}
-
-.input-group.erro input { border-color: var(--error); }
-.msg-erro { color: var(--error); font-size: 0.75rem; font-weight: bold; }
-
-.form-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-
-/* BOTÕES */
+/* =========================================
+   3. BOTÕES GLOBAIS
+   ========================================= */
 .btn-primario { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: bold; }
 .btn-secundario { background: #eee; color: #666; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; }
 
-/* --- MEDIA QUERIES (MOBILE) --- */
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    padding: 20px;
-  }
-  
-  .nav-links {
-    width: 100%;
-    justify-content: center;
-    margin-top: 15px;
-  }
-
-  .form-grid, .form-grid-3 {
-    grid-template-columns: 1fr; /* Empilha tudo no mobile */
-  }
-
-  .form-footer {
-    flex-direction: column-reverse;
-  }
-
-  .btn-primario, .btn-secundario {
-    width: 100%;
-    padding: 16px;
-  }
-}
-
-/* --- ESTILOS DO DASHBOARD --- */
-.dashboard-header {
-  margin-bottom: 30px;
-}
+/* =========================================
+   4. DASHBOARD (Visão Geral)
+   ========================================= */
+.dashboard-header { margin-bottom: 30px; }
+.dashboard-header h2 { color: var(--secondary); margin: 0 0 5px 0; }
 
 .grid-stats {
   display: grid;
@@ -185,116 +79,169 @@ body {
   align-items: center;
   gap: 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  border-left: 5px solid #3498db;
+  border-left: 5px solid var(--primary);
 }
 
-.card-stat.alerta { border-left-color: #e74c3c; }
+.card-stat.alerta { border-left-color: var(--danger); }
 .card-stat.info { border-left-color: #f1c40f; }
+.card-stat .icon { font-size: 2.5rem; }
+.card-stat h3 { margin: 0; font-size: 0.9rem; color: #7f8c8d; text-transform: uppercase; }
+.card-stat .valor { margin: 5px 0 0 0; font-size: 1.8rem; font-weight: bold; color: var(--secondary); }
 
-.card-stat .icon {
-  font-size: 2.5rem;
-}
-
-.card-stat h3 {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  text-transform: uppercase;
-}
-
-.card-stat .valor {
-  margin: 5px 0 0 0;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.dashboard-actions {
-  margin-top: 20px;
-}
-
-/* Ajuste para Mobile */
-@media (max-width: 600px) {
-  .grid-stats {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* --- ESTILOS DA TELA DE ESTOQUE VAZIO (PRO) --- */
-.container-vazio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+/* =========================================
+   5. FORMULÁRIO DE PRODUTO (PREMIUM)
+   ========================================= */
+.form-moderno {
   background: white;
-  padding: 60px 20px;
+  padding: 40px; /* Mais espaço para respirar */
+  border-radius: 16px; /* Cantos mais arredondados e modernos */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+}
+
+.form-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.form-header h2 { margin: 0; color: var(--secondary); font-size: 1.6rem; }
+.form-header p { color: #64748b; font-size: 0.95rem; margin-top: 8px; }
+
+/* Sessões agora viram "caixas" suaves */
+.form-secao {
+  background: #f8fafc; /* Fundo cinza bem claro para destacar a área */
+  padding: 24px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-  margin-top: 30px;
-  border: 2px dashed #dfe6e9; /* Borda pontilhada dá charme */
+  margin-bottom: 24px;
+  border: 1px solid #f1f5f9;
 }
 
-.ilustracao-vazia {
-  font-size: 5rem;
-  margin-bottom: 20px;
-  opacity: 0.8;
+.form-secao h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--primary); /* Azul do Zenvyx para dar destaque */
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-.container-vazio h2 {
-  margin: 0;
-  color: #2c3e50;
-  font-size: 1.8rem;
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+.input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 5px; }
+
+/* Labels menores e mais elegantes */
+.input-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.container-vazio p {
-  color: #7f8c8d;
-  max-width: 400px;
-  margin: 10px 0 30px 0;
-  font-size: 1rem;
-  line-height: 1.5;
+/* Campos de digitação mais gordinhos e com transição suave */
+.input-group input {
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--secondary);
+  background: white;
+  transition: all 0.2s ease;
 }
 
-/* O BOTÃO BONITÃO */
-.btn-vazio-pro {
-  background-color: #27ae60; /* Verde sucesso */
-  color: white;
-  border: none;
-  padding: 18px 35px;
-  border-radius: 50px; /* Bem arredondado */
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
-  transition: all 0.3s ease;
+.input-group input::placeholder { color: #cbd5e1; }
+
+/* O toque de mestre: Efeito de foco quando você clica para digitar */
+.input-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15); /* Cria um anel brilhante azul em volta */
+  outline: none;
+}
+
+.input-group.erro input {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.15); /* Anel vermelho se tiver erro */
+}
+
+.msg-erro { color: var(--danger); font-size: 0.8rem; font-weight: 600; margin-top: 4px; }
+
+.form-footer {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
 }
 
-.btn-vazio-pro:hover {
-  background-color: #2ecc71; /* Verde mais claro no hover */
-  transform: translateY(-3px); /* Efeito de flutuar ao passar o mouse */
-  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
-}
+/* Efeitos nos botões */
+.btn-secundario:hover { background: #e2e8f0; color: var(--secondary); }
+.btn-primario:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); transition: 0.2s; }
 
-.btn-vazio-pro:active {
-  transform: translateY(1px);
-}
+/* =========================================
+   6. ESTOQUE (Cabeçalho e Tela Vazia)
+   ========================================= */
+.container-estoque { padding: 20px 0; }
+.estoque-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.estoque-header h1 { font-size: 1.8rem; color: var(--secondary); margin: 0; }
+.estoque-header p { color: #64748b; margin: 5px 0 0 0; }
 
-/* Responsividade Mobile */
+.container-vazio {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; background: white; padding: 60px 20px; border-radius: 12px;
+  border: 2px dashed var(--border); margin-top: 20px;
+}
+.ilustracao-vazia { font-size: 5rem; margin-bottom: 20px; opacity: 0.8; }
+.container-vazio h2 { margin: 0; color: var(--secondary); font-size: 1.8rem; }
+.container-vazio p { color: #7f8c8d; max-width: 400px; margin: 10px 0 30px 0; }
+
+.btn-vazio-pro { background-color: var(--success); color: white; border: none; padding: 18px 35px; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; }
+.btn-vazio-pro:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4); }
+
+/* =========================================
+   7. GRADE DE PRODUTOS (CARDS)
+   ========================================= */
+.grade-produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+
+.card-produto { background: white; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; display: flex; flex-direction: column; overflow: hidden; }
+.card-produto:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+
+.card-corpo { padding: 24px; flex-grow: 1; }
+.card-cabecalho { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.card-cabecalho h3 { margin: 0; font-size: 1.1rem; color: var(--secondary); line-height: 1.4; }
+
+.sku-tag { background: #f1f5f9; color: #475569; font-size: 0.7rem; padding: 4px 10px; border-radius: 6px; font-weight: 700; text-transform: uppercase; }
+
+.info-precos { display: flex; justify-content: space-around; align-items: center; background: #f8fafc; padding: 16px; border-radius: 12px; }
+.preco-item label, .estoque-item label { display: block; font-size: 0.7rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+.preco-item span, .estoque-item span { font-size: 1.2rem; font-weight: 800; color: var(--secondary); }
+.estoque-item .qtd { color: var(--success); }
+.separador { width: 1px; height: 35px; background: #cbd5e1; }
+
+.card-acoes { display: flex; background: #fcfcfc; border-top: 1px solid var(--border); }
+.card-acoes button { flex: 1; padding: 16px; border: none; background: transparent; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: 0.2s; }
+.btn-editar { color: var(--primary); border-right: 1px solid var(--border) !important; }
+.btn-editar:hover { background: #eff6ff; }
+.btn-excluir { color: var(--danger); }
+.btn-excluir:hover { background: #fef2f2; }
+
+.alerta-estoque { border: 2px solid #fee2e2; }
+.alerta-estoque .qtd { color: var(--danger); }
+
+/* =========================================
+   8. ANIMAÇÕES E RESPONSIVIDADE
+   ========================================= */
+.fade-in { animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
 @media (max-width: 600px) {
-  .container-vazio {
-    padding: 40px 15px;
-  }
-  
-  .container-vazio h2 {
-    font-size: 1.5rem;
-  }
-  
-  .btn-vazio-pro {
-    width: 100%;
-    justify-content: center;
-    font-size: 1rem;
-  }
+  .navbar { flex-direction: column; padding: 20px; }
+  .nav-links { width: 100%; justify-content: center; margin-top: 15px; }
+  .estoque-header { flex-direction: column; text-align: center; gap: 20px; }
+  .grade-produtos { grid-template-columns: 1fr; }
+  .form-grid, .form-grid-3 { grid-template-columns: 1fr; }
+  .form-footer { flex-direction: column-reverse; }
+  .btn-primario, .btn-secundario { width: 100%; padding: 16px; }
 }

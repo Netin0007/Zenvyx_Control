@@ -1,33 +1,13 @@
-/**
- * Ponto de entrada da aplicação React
- * Responsável por:
- * - Inicializar a árvore de componentes
- * - Conectar o React ao DOM
- */
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App.jsx'
+import './styles/App.css'
 
-// Importa modo estrito do React
-import { StrictMode } from 'react';
-
-// Função para criar a raiz da aplicação (React 18+)
-import { createRoot } from 'react-dom/client';
-
-// Componente principal da aplicação
-import App from './App.jsx';
-
-/**
- * Inicializa a aplicação React
- * - Busca o elemento #root no HTML
- * - Renderiza o componente App dentro dele
- */
-createRoot(document.getElementById('root')).render(
-
-  /**
-   * StrictMode:
-   * - Ativa verificações adicionais em desenvolvimento
-   * - Ajuda a identificar problemas e más práticas
-   * - NÃO afeta produção
-   */
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+)

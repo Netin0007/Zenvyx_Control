@@ -308,3 +308,33 @@ body {
   cursor: pointer;
   font-weight: bold;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+  padding: 15px 30px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+.navbar h1 {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+.nav-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.nav-links a:hover {
+  background-color: #34495e;
+}

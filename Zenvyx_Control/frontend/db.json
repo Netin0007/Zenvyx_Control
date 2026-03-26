@@ -26,6 +26,15 @@
       "precoCusto": "0.85",
       "precoVenda": "1.35",
       "estoqueBaixo": 5
+    },
+    {
+      "id": "5039",
+      "nome": "Lapis De Cor",
+      "sku": "HGD-304",
+      "quantidade": "10",
+      "precoCusto": "1.00",
+      "precoVenda": "2.00",
+      "estoqueBaixo": "3"
     }
   ]
 }

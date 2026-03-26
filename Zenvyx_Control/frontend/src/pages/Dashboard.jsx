@@ -1,34 +1,54 @@
 import { useProdutos } from '../hooks/useProdutos';
 import { Link } from 'react-router-dom';
 
-export default function Dashboard() {
-  const { produtos, carregando } = useProdutos();
-
-  if (carregando) return <p>Carregando dados...</p>;
-
+function Dashboard() {
+  const { produtos } = useProdutos();
+  
   const totalProdutos = produtos.length;
-  const estoqueBaixo = produtos.filter(p => p.quantidade <= (p.estoqueBaixo || 5)).length;
+  const estoqueBaixo = produtos.filter(p => p.quantidade <= p.estoqueBaixo).length;
 
   return (
-    <div className="dashboard-container">
-      <h2>Visão Geral do Negócio</h2>
-      
-      <div className="form-grid">
-        <div className="card-produto">
-          <h3>Total de Produtos no Catálogo</h3>
-          <p className="preco">{totalProdutos}</p>
+    <div className="fade-in">
+      <header className="dashboard-header">
+        <h2>Visão Geral do Negócio</h2>
+        <p>Bem-vindo ao painel de controle do Zenvyx.</p>
+      </header>
+
+      <div className="grid-stats">
+        <div className="card-stat">
+          <div className="icon">📦</div>
+          <div>
+            <h3>Total de Itens</h3>
+            <p className="valor">{totalProdutos}</p>
+          </div>
         </div>
-        <div className="card-produto alerta-estoque">
-          <h3>Alertas de Estoque Baixo</h3>
-          <p className="preco" style={{ color: '#d35400' }}>{estoqueBaixo}</p>
+
+        <div className="card-stat alerta">
+          <div className="icon">⚠️</div>
+          <div>
+            <h3>Estoque Baixo</h3>
+            <p className="valor">{estoqueBaixo}</p>
+          </div>
+        </div>
+
+        <div className="card-stat info">
+          <div className="icon">💰</div>
+          <div>
+            <h3>Valor em Estoque</h3>
+            <p className="valor">
+              R$ {produtos.reduce((acc, p) => acc + (p.precoCusto * p.quantidade), 0).toFixed(2)}
+            </p>
+          </div>
         </div>
       </div>
 
-      <div style={{ marginTop: '30px' }}>
-        <Link to="/estoque" className="btn-novo-produto" style={{ textDecoration: 'none', display: 'inline-block' }}>
-          Gerenciar Estoque ➔
+      <div className="dashboard-actions">
+        <Link title="Ir para o estoque" to="/estoque" className="btn-primario">
+          Gerenciar Estoque →
         </Link>
       </div>
     </div>
   );
-}   
+}
+
+export default Dashboard;

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import { fetchZoho } from "../services/api.js";
 
 export function useProdutos() {
   const [produtos, setProdutos] = useState([]);
@@ -11,11 +12,22 @@ export function useProdutos() {
   const carregarProdutos = async () => {
     setCarregando(true);
     try {
-      const response = await fetch('http://localhost:3001/produtos');
-      const data = await response.json();
-      setProdutos(data);
+      const data = await fetchZoho("/items");
+
+      // O Zoho devolve os dados em inglês. Vamos "traduzir" para os Cards do nosso sistema!
+      const produtosTraduzidos = data.items.map((item) => ({
+        id: item.item_id,
+        nome: item.name,
+        sku: item.sku,
+        quantidade: item.stock_on_hand || 0,
+        precoCusto: item.purchase_rate || 0,
+        precoVenda: item.rate || 0,
+        estoqueBaixo: item.reorder_level || 5,
+      }));
+
+      setProdutos(produtosTraduzidos);
     } catch (erro) {
-      console.error("Erro ao buscar produtos:", erro);
+      console.error("Erro ao buscar produtos do Zoho:", erro);
     } finally {
       setCarregando(false);
     }
@@ -23,57 +35,75 @@ export function useProdutos() {
 
   const adicionarProduto = async (novoProduto) => {
     try {
-      const response = await fetch('http://localhost:3001/produtos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(novoProduto),
+      const payloadZoho = {
+        name: novoProduto.nome,
+        sku: novoProduto.sku,
+        rate: Number(novoProduto.precoVenda),
+        purchase_rate: Number(novoProduto.precoCusto),
+        reorder_level: Number(novoProduto.estoqueBaixo),
+        item_type: "inventory", // Avisa ao Zoho que é um produto de estoque físico
+      };
+
+      const data = await fetchZoho("/items", {
+        method: "POST",
+        body: JSON.stringify(payloadZoho),
       });
-      if (response.ok) {
-        const produtoSalvo = await response.json();
-        setProdutos([...produtos, produtoSalvo]);
+
+      if (data.code === 0) {
+        carregarProdutos(); // Recarrega a lista para mostrar o novo produto
         return true;
       }
     } catch (erro) {
-      console.error("Erro ao adicionar:", erro);
+      console.error("Erro ao cadastrar no Zoho:", erro);
       return false;
     }
   };
 
   const atualizarProduto = async (produtoAtualizado) => {
     try {
-      const response = await fetch(`http://localhost:3001/produtos/${produtoAtualizado.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(produtoAtualizado),
+      const payloadZoho = {
+        name: produtoAtualizado.nome,
+        sku: produtoAtualizado.sku,
+        rate: Number(produtoAtualizado.precoVenda),
+        purchase_rate: Number(produtoAtualizado.precoCusto),
+        reorder_level: Number(produtoAtualizado.estoqueBaixo),
+      };
+
+      const data = await fetchZoho(`/items/${produtoAtualizado.id}`, {
+        method: "PUT",
+        body: JSON.stringify(payloadZoho),
       });
-      if (response.ok) {
-        setProdutos(produtos.map(p => p.id === produtoAtualizado.id ? produtoAtualizado : p));
+
+      if (data.code === 0) {
+        carregarProdutos(); // Recarrega a lista com os dados novos
         return true;
       }
     } catch (erro) {
-      console.error("Erro ao atualizar:", erro);
+      console.error("Erro ao atualizar no Zoho:", erro);
       return false;
     }
   };
 
   const excluirProduto = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/produtos/${id}`, { method: 'DELETE' });
-      if (response.ok) {
-        setProdutos(produtos.filter(produto => produto.id !== id));
+      const data = await fetchZoho(`/items/${id}`, {
+        method: "DELETE",
+      });
+
+      if (data.code === 0) {
+        carregarProdutos(); // Atualiza a tela tirando o card apagado
         return true;
       }
     } catch (erro) {
-      console.error("Erro ao excluir:", erro);
+      console.error("Erro ao excluir no Zoho:", erro);
       return false;
     }
   };
-
   return {
     produtos,
     carregando,
     adicionarProduto,
     atualizarProduto,
-    excluirProduto
+    excluirProduto,
   };
 }

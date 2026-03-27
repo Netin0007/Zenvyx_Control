@@ -5,6 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
+  // Ignora artefatos de build para focar apenas no código-fonte.
   globalIgnores(['dist']),
   {
     files: ['**/*.{js,jsx}'],
@@ -23,6 +24,7 @@ export default defineConfig([
       },
     },
     rules: {
+      // Permite convenções de constantes/componentes sem falso positivo.
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },

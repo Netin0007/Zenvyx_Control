@@ -1,6 +1,7 @@
 // src/services/api.js
 const API_URL = "http://localhost:3001"; 
 
+// Wrapper centralizado para padronizar chamadas HTTP ao backend.
 export const fetchZoho = async (endpoint, options = {}) => {
   const url = `${API_URL}${endpoint}`;
   
@@ -22,3 +23,22 @@ export const fetchZoho = async (endpoint, options = {}) => {
     throw error;
   }
 };
+
+// Helpers de Produtos.
+export const getProdutos = () => fetchZoho('/api/produtos');
+export const getProdutoById = (id) => fetchZoho(`/api/produtos/${id}`);
+export const criarProduto = (data) => fetchZoho('/api/produtos', {
+  method: 'POST',
+  body: JSON.stringify(data)
+});
+
+// Helpers de Movimentações.
+export const getMovimentacoes = () => fetchZoho('/api/movimentacoes');
+export const getMovimentacaoById = (id) => fetchZoho(`/api/movimentacoes/${id}`);
+export const criarMovimentacao = (data) => fetchZoho('/api/movimentacoes', {
+  method: 'POST',
+  body: JSON.stringify(data)
+});
+export const deletarMovimentacao = (id) => fetchZoho(`/api/movimentacoes/${id}`, {
+  method: 'DELETE'
+});

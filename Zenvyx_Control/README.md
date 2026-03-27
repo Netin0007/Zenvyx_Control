@@ -1,31 +1,75 @@
-# 📦 Estoque Simples - Zenvyx Control
+# Zenvyx Control - Frontend
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+Aplicacao React responsavel pela interface do sistema de estoque.
 
-Interface web moderna para um sistema de gerenciamento de estoque, desenvolvida como parte do projeto final da disciplina de IHC. A aplicação permite o controle completo de produtos, incluindo criação, leitura, atualização e exclusão (CRUD), com atualizações em tempo real na interface.
+## Stack
 
-## ✨ Funcionalidades Principais
+- React
+- React Router
+- Vite
+- Lucide React
+- CSS
 
-- **Listagem de Produtos:** Visualização de todos os produtos em estoque em uma tabela clara e organizada.
-- **Adicionar Produto:** Formulário intuitivo para cadastrar novos itens no inventário.
-- **Editar Produto:** Funcionalidade de edição que preenche o formulário com os dados do item selecionado para uma atualização fácil.
-- **Excluir Produto:** Remoção de itens do estoque com um clique.
-- **Alerta de Estoque Baixo:** Itens com quantidade igual ou inferior ao nível de alerta são destacados visualmente na tabela para rápida identificação.
-- **Interface Reativa:** Todas as operações (criar, editar, excluir) refletem na tabela instantaneamente, sem a necessidade de recarregar a página.
+## Paginas
 
-## 🚀 Tecnologias Utilizadas
+- Dashboard
+- Estoque
+- Movimentacao
+- Novo Produto
 
-- **[React.js](https://reactjs.org/):** Biblioteca principal para a construção da interface de usuário.
-- **[Vite.js](https://vitejs.dev/):** Ferramenta de build extremamente rápida para o ambiente de desenvolvimento.
-- **CSS3:** Para estilização e melhorias visuais dos componentes.
-- **JSON Server:** Utilizado como um mock de API para simular o backend durante o desenvolvimento do frontend.
+## Execucao
 
-## ⚙️ Como Rodar o Projeto Localmente
+```bash
+cd Zenvyx_Control
+npm install
+npm run dev
+```
 
-Siga os passos abaixo para configurar e rodar a aplicação no seu ambiente de desenvolvimento.
+Aplicacao em `http://localhost:5173` (ou porta informada no terminal).
 
-**Pré-requisitos:**
-- [Node.js](https://nodejs.org/en/) (versão LTS recomendada)
-- [Git](https://git-scm.com/)
+## Integracao com Backend
+
+O frontend consome a API em `http://localhost:3001`.
+
+Antes de usar a interface, rode tambem o backend:
+
+```bash
+cd ../backend
+npm install
+npm run dev
+```
+
+## Scripts
+
+- `npm run dev` inicia o ambiente de desenvolvimento
+- `npm run build` gera build de producao
+- `npm run preview` executa preview da build
+- `npm run lint` executa lint
+- `npm run server` sobe mock local com json-server (opcional)
+
+## Estrutura
+
+```text
+Zenvyx_Control/
+|- src/
+|  |- components/
+|  |- hooks/
+|  |- pages/
+|  |- services/
+|  |- styles/
+|  |- App.jsx
+|  `- main.jsx
+|- index.html
+|- vite.config.js
+`- package.json
+```
+
+## Observacoes
+
+- As telas principais fazem chamadas HTTP diretas para a API local.
+- Existe uma camada utilitaria em `src/services/api.js` para centralizacao gradual das chamadas.
+- O arquivo `src/hooks/useProdutos.js` esta como placeholder e pode ser reativado no futuro.
+
+## Referencia
+
+Documentacao geral do monorepo: `../README.md`.

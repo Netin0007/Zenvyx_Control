@@ -3,6 +3,7 @@ import { LayoutDashboard, Package, ArrowRightLeft, PlusCircle } from 'lucide-rea
 
 export default function Navbar() {
   return (
+    // Navegação global visível em todas as páginas da aplicação.
     <nav className="topnav">
       <a href="/" className="topnav-brand">Zenvyx Control</a>
       <ul className="topnav-menu">
@@ -25,7 +26,7 @@ export default function Navbar() {
             </a>
         </li>
         <li>
-            <a href="/novoproduto" className='nav-item'>
+            <a href="/novo-produto" className='nav-item'>
             <PlusCircle size={20} className='nav-icon'/>
             <span className='nav-text'>Novo Produto</span>
             </a>
